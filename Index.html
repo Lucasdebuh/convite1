@@ -186,48 +186,6 @@ audio{width:100%}
 
     <a class="open" href="#detalhes">🐚 Abrir Convite 🐚</a>
 
-    <!-- Container do Player escondido -->
-<div id="player-container">
-    <div id="player"></div>
-</div>
-
-<script>
-  // Carrega a API do YouTube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '0',
-      width: '0',
-      videoId: 'WxnpecKm4tA',
-      playerVars: {
-        'autoplay': 1,
-        'loop': 1,
-        'playlist': 'WxnpecKm4tA'
-      },
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    // Tenta tocar. Se o navegador bloquear, espera um clique
-    event.target.playVideo();
-    
-    // Fallback: se o autoplay for bloqueado pelo navegador, toca no primeiro clique do usuário
-    document.body.addEventListener('click', function() {
-        if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-            player.playVideo();
-        }
-    }, { once: true });
-  }
-</script>
-
 <!-- ... resto do seu conteúdo ... -->
 </body>
 </html>
@@ -321,5 +279,47 @@ audio{width:100%}
 </script>
 
 <!-- ... resto do seu conteúdo ... -->
+  <!-- Container do Player escondido -->
+<div id="player-container">
+    <div id="player"></div>
+</div>
+
+<script>
+  // Carrega a API do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'WxnpecKm4tA',
+      playerVars: {
+        'autoplay': 1,
+        'loop': 1,
+        'playlist': 'WxnpecKm4tA'
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    // Tenta tocar. Se o navegador bloquear, espera um clique
+    event.target.playVideo();
+    
+    // Fallback: se o autoplay for bloqueado pelo navegador, toca no primeiro clique do usuário
+    document.body.addEventListener('click', function() {
+        if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+            player.playVideo();
+        }
+    }, { once: true });
+  }
+</script>
+  
 </body>
 </html>
