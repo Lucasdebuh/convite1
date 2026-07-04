@@ -221,3 +221,66 @@ audio{width:100%}
 </div>
 </body>
 </html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite Maria Fernanda - 15 anos</title>
+<!-- ... seu restante do head ... -->
+<style>
+  /* Esconde o container do player */
+  #player-container {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Container do Player escondido -->
+<div id="player-container">
+    <div id="player"></div>
+</div>
+
+<script>
+  // Carrega a API do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'WxnpecKm4tA',
+      playerVars: {
+        'autoplay': 1,
+        'loop': 1,
+        'playlist': 'WxnpecKm4tA'
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    // Tenta tocar. Se o navegador bloquear, espera um clique
+    event.target.playVideo();
+    
+    // Fallback: se o autoplay for bloqueado pelo navegador, toca no primeiro clique do usuário
+    document.body.addEventListener('click', function() {
+        if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+            player.playVideo();
+        }
+    }, { once: true });
+  }
+</script>
+
+<!-- ... resto do seu conteúdo ... -->
+</body>
+</html>
