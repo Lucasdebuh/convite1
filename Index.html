@@ -24,84 +24,124 @@
   
   .page {
     min-height: 100vh;
-    /* Fundo ajustado para um gradiente escuro e elegante, já que a imagem original estava cortada */
     background: linear-gradient(180deg, rgba(2,11,24,1) 0%, rgba(10,25,47,1) 50%, rgba(2,11,24,1) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px 80px;
+    padding: 60px 20px 80px;
   }
   
   header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
 
   .name {
     font-family: 'Great Vibes', cursive;
-    font-size: 4.5rem;
+    font-size: 4.8rem;
     color: #d4af37; /* Dourado */
-    margin: 20px 0 0;
+    margin: 0;
     font-weight: normal;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.1;
   }
 
   .subtitle {
     font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    letter-spacing: 3px;
+    font-size: 1.3rem;
+    letter-spacing: 4px;
     color: #f9f9f9;
-    margin-top: 5px;
+    margin-top: 10px;
     text-transform: uppercase;
   }
 
-  .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: #d4af37;
-    margin: 40px 0 20px;
-    text-align: center;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-    padding-bottom: 10px;
+  /* Container dos botões */
+  .actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     width: 100%;
+    max-width: 600px;
   }
 
-  .btn-maps {
-    display: inline-block;
+  /* Estilo base para todos os botões */
+  .action-btn {
+    display: block;
+    width: 100%;
+    max-width: 350px;
     background: #d4af37;
     color: #020b18;
     font-family: 'Cinzel', serif;
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 16px 30px;
     border-radius: 30px;
     font-weight: bold;
     font-size: 1.1rem;
-    margin: 20px 0;
+    text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    border: none;
+    cursor: pointer;
   }
 
-  .btn-maps:hover {
+  .action-btn:hover {
     background: #f3c746;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
   }
 
-  .content-box {
-    max-width: 600px;
+  /* Estilos específicos para o menu sanfona (details/summary) */
+  details {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    margin-bottom: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .location-text {
-    font-size: 1.3rem;
-    text-align: center;
-    margin-bottom: 10px;
+  summary {
+    list-style: none; /* Remove a seta padrão */
+    outline: none;
+    margin: 0 auto;
+  }
+
+  summary::-webkit-details-marker {
+    display: none; /* Remove a seta no Safari/Chrome */
+  }
+
+  summary::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+
+  details[open] summary::after {
+    transform: rotate(180deg); /* Gira a setinha quando abre */
+  }
+
+  /* Conteúdo da lista de presentes */
+  .gifts-content {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeInDown 0.4s ease-out;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .gift-category {
@@ -112,7 +152,9 @@
     font-family: 'Cinzel', serif;
     font-size: 1.3rem;
     color: #e5c158;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 5px;
   }
 
   .gift-category ul {
@@ -123,7 +165,7 @@
 
   .gift-category ul li {
     font-size: 1.25rem;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     padding-left: 20px;
     position: relative;
     line-height: 1.4;
@@ -139,7 +181,7 @@
   .gift-note {
     font-size: 1.1rem;
     font-style: italic;
-    color: #aaa;
+    color: #bbb;
     margin-top: -5px;
     margin-bottom: 15px;
     display: block;
@@ -147,7 +189,7 @@
 
   .footer-msg {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #d4af37;
     margin-top: 30px;
     font-family: 'Great Vibes', cursive;
@@ -155,8 +197,8 @@
   }
 
   @media (max-width: 600px) {
-    .name { font-size: 3.5rem; }
-    .content-box { padding: 20px; }
+    .name { font-size: 4rem; }
+    .gifts-content { padding: 20px 15px; }
   }
 </style>
 </head>
@@ -168,308 +210,105 @@
     <h2 class="subtitle">Meus 15 Anos</h2>
   </header>
 
-  <!-- SEÇÃO DE LOCALIZAÇÃO -->
-  <div class="content-box" style="text-align: center;">
-    <h2 class="section-title" style="margin-top: 0;">Local da Festa</h2>
-    <p class="location-text">Venha celebrar este momento inesquecível comigo!</p>
-    <a href="https://maps.app.goo.gl/vHLRZAMYoxwvu7VK6" target="_blank" class="btn-maps">📍 Ver no Google Maps</a>
-  </div>
-
-  <!-- SEÇÃO LISTA DE PRESENTES -->
-  <div class="content-box">
-    <h2 class="section-title" style="margin-top: 0;">🎁 Lista de Presentes</h2>
-
-    <div class="gift-category">
-      <h3>👗 Roupas</h3>
-      <ul>
-        <li>Calça: 38</li>
-        <li>Blusas: M</li>
-        <li>Sapato: 36</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>🌸 Perfumes e Cuidados</h3>
-      <ul>
-        <li>Perfumes e produtos de O Boticário</li>
-        <li>Hidratantes</li>
-        <li>Body Splash</li>
-        <li>Kits de cuidados pessoais</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>💄 Maquiagem</h3>
-      <ul>
-        <li>Paletas de sombras</li>
-        <li>Batons e Gloss</li>
-        <li>Delineador</li>
-        <li>Máscara de cílios</li>
-        <li>Pincéis e Esponjas de maquiagem</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>🎨 Materiais de Arte</h3>
-      <ul>
-        <li>Marcadores (Ohuhu, Copic, Touch ou similares)</li>
-        <li>Sketchbook</li>
-        <li>Telas para pintura</li>
-        <li>Tintas acrílicas ou guache</li>
-        <li>Pincéis e Lápis de cor</li>
-        <li>Canetas brush pen</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>👜 Acessórios</h3>
-      <ul>
-        <li>Bolsas</li>
-        <li>Colares, Brincos e Pulseiras</li>
-        <li>Anéis</li>
-        <li>Presilhas e acessórios para cabelo</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>🎮 Itens Nerds</h3>
-      <span class="gift-note">(Para quem conhece um pouco dos meus gostos!)</span>
-      <ul>
-        <li>Colecionáveis e Funko Pop</li>
-        <li>Canecas temáticas</li>
-        <li>Livros de arte</li>
-        <li>Camisetas de séries, filmes ou jogos que eu gosto</li>
-        <li>Mouse pad, cadernos e outros itens temáticos</li>
-      </ul>
-    </div>
-
-    <div class="gift-category">
-      <h3>📚 Livros</h3>
-      <ul>
-        <li>Instinto Assassino</li>
-        <li>A Princesa e o Queijo Quente</li>
-        <li>Assassinato no Expresso do Oriente</li>
-        <li>Nadia Keane</li>
-        <li>O Legado de Hawthorne / A Herança</li>
-      </ul>
-    </div>
-
-    <p class="footer-msg">✨ Qualquer presente escolhido com carinho será muito especial para mim! 💖</p>
-  </div>
-</div>
-
-</body>
-</html>
-}
-.details{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  margin:0 auto 26px;
-  padding:14px 8px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(0,12,28,.64);
-  backdrop-filter:blur(4px);
-}
-.item{padding:8px 6px;border-right:1px solid rgba(255,255,255,.28)}
-.item:last-child{border-right:0}
-.icon{font-size:32px;color:#f8d88e;display:block;margin-bottom:6px}
-.item strong{
-  display:block;
-  color:#f7ce73;
-  font-family:'Cinzel',serif;
-  font-size:13px;
-  margin-bottom:5px;
-}
-.item span{font-size:15px;color:white}
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.btn{
-  min-height:74px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 13px;
-  border-radius:16px;
-  text-decoration:none;
-  text-align:left;
-  color:white;
-  background:rgba(0,12,28,.70);
-  border:1.3px solid rgba(255,255,255,.25);
-  box-shadow:0 10px 26px rgba(0,0,0,.42);
-  backdrop-filter:blur(4px);
-}
-.emoji{font-size:32px;width:38px;text-align:center}
-.btn b{display:block;font-family:'Cinzel',serif;font-size:13px;color:#f8d88e}
-.btn small{display:block;font-size:14px;color:#fff}
-.whats{border-color:#54ff88;box-shadow:0 0 15px rgba(84,255,136,.35)}
-.cal{border-color:#9289ff;box-shadow:0 0 15px rgba(146,137,255,.35)}
-.gift{border-color:#ff71dd;box-shadow:0 0 15px rgba(255,113,221,.35)}
-.map{border-color:#ffbf55;box-shadow:0 0 15px rgba(255,191,85,.35)}
-.footer{margin:24px 0 0;color:#ffe3a0;font-size:17px;text-shadow:0 2px 8px #000}
-@media(max-width:390px){
-  .invite{padding:44px 18px 34px}
-  .name{font-size:74px}
-  .phrase{font-size:22px}
-  .kicker{letter-spacing:6px;font-size:14px}
-  .details{font-size:12px}
-  .actions{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
-<div class="page">
-  <main class="invite">
-    <div class="kicker">CONVITE ESPECIAL</div>
-    <div class="decor"></div>
-
-    <h1 class="name">Maria<br>Fernanda</h1>
-
-    <div class="age">15 ANOS</div>
-    <div class="decor"></div>
-
-    <div class="phrase">Você está convidado para<br>mergulhar comigo nessa história<br>encantada!</div>
-
-    <a class="open" href="#detalhes">🐚 Abrir Convite 🐚</a>
-
-<!-- ... resto do seu conteúdo ... -->
-</body>
-</html>
-
-    <h2 id="detalhes" class="detailsTitle">Detalhes da Festa</h2>
-
-    <div class="details">
-      <div class="item"><span class="icon">📅</span><strong>29 DE AGOSTO</strong><span>Sábado</span></div>
-      <div class="item"><span class="icon">🕑</span><strong>INÍCIO ÀS 14H</strong><span>Tarde inesquecível</span></div>
-      <div class="item"><span class="icon">📍</span><strong>SÍTIO DAS BROMÉLIAS</strong><span>Local da Festa</span></div>
-    </div>
-
-    <div class="actions">
-      <a class="btn whats" target="_blank" rel="noopener" href="https://wa.me/5522998290740?text=Ol%C3%A1%21%20Confirmo%20minha%20presen%C3%A7a%20na%20festa%20de%2015%20anos%20da%20Maria%20Fernanda.">
-        <span class="emoji">✅</span><span><b>Confirmar Presença</b><small>Falar no WhatsApp</small></span>
-      </a>
-      <a class="btn cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=15%20anos%20Maria%20Fernanda&dates=20260829T170000Z/20260829T210000Z&details=Convite%20de%2015%20anos%20da%20Maria%20Fernanda.&location=S%C3%ADtio%20das%20Brom%C3%A9lias&sf=true&output=xml">
-        <span class="emoji">📅</span><span><b>Adicionar à Agenda</b><small>Salvar no Google Agenda</small></span>
-      </a>
-      <a class="btn gift" href="#" onclick="alert('Lista de presentes aguardando o link final.'); return false;">
-        <span class="emoji">🎁</span><span><b>Lista de Presentes</b><small>Escolha o seu presente</small></span>
-      </a>
-      <a class="btn map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=S%C3%ADtio%20das%20Brom%C3%A9lias">
-        <span class="emoji">📍</span><span><b>Ver Local no Mapa</b><small>Como chegar à festa</small></span>
-      </a>
-    </div>
-
-    <div class="footer">💛 Sua presença tornará este dia ainda mais especial! 💛</div>
-  </main>
-</div>
-</body>
-</html>
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Convite Maria Fernanda - 15 anos</title>
-<!-- ... seu restante do head ... -->
-<style>
-  /* Esconde o container do player */
-  #player-container {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-  }
-</style>
-</head>
-<body>
-
-<!-- Container do Player escondido -->
-<div id="player-container">
-    <div id="player"></div>
-</div>
-
-<script>
-  // Carrega a API do YouTube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '0',
-      width: '0',
-      videoId: 'WxnpecKm4tA',
-      playerVars: {
-        'autoplay': 1,
-        'loop': 1,
-        'playlist': 'WxnpecKm4tA'
-      },
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    // Tenta tocar. Se o navegador bloquear, espera um clique
-    event.target.playVideo();
+  <div class="actions-container">
     
-    // Fallback: se o autoplay for bloqueado pelo navegador, toca no primeiro clique do usuário
-    document.body.addEventListener('click', function() {
-        if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-            player.playVideo();
-        }
-    }, { once: true });
-  }
-</script>
+    <!-- BOTÃO LOCALIZAÇÃO -->
+    <a href="https://maps.app.goo.gl/vHLRZAMYoxwvu7VK6" target="_blank" class="action-btn">
+      📍 Localização
+    </a>
 
-<!-- ... resto do seu conteúdo ... -->
-  <!-- Container do Player escondido -->
-<div id="player-container">
-    <div id="player"></div>
+    <!-- BOTÃO CONFIRMAR PRESENÇA -->
+    <!-- Substitua "SEUNUMERO" pelo número do WhatsApp com DDD (Ex: 5511999999999) -->
+    <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20nos%2015%20anos%20da%20Maria%20Fernanda!" target="_blank" class="action-btn">
+      ✅ Confirmar Presença
+    </a>
+
+    <!-- MENU EXPANSIVO: LISTA DE PRESENTES -->
+    <details>
+      <summary class="action-btn">🎁 Lista de Presentes</summary>
+      
+      <div class="gifts-content">
+        <div class="gift-category">
+          <h3>👗 Roupas</h3>
+          <ul>
+            <li>Calça: 38</li>
+            <li>Blusas: M</li>
+            <li>Sapato: 36</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>🌸 Perfumes e Cuidados</h3>
+          <ul>
+            <li>Perfumes e produtos de O Boticário</li>
+            <li>Hidratantes</li>
+            <li>Body Splash</li>
+            <li>Kits de cuidados pessoais</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>💄 Maquiagem</h3>
+          <ul>
+            <li>Paletas de sombras</li>
+            <li>Batons e Gloss</li>
+            <li>Delineador</li>
+            <li>Máscara de cílios</li>
+            <li>Pincéis e Esponjas de maquiagem</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>🎨 Materiais de Arte</h3>
+          <ul>
+            <li>Marcadores (Ohuhu, Copic, Touch ou similares)</li>
+            <li>Sketchbook</li>
+            <li>Telas para pintura</li>
+            <li>Tintas acrílicas ou guache</li>
+            <li>Pincéis e Lápis de cor</li>
+            <li>Canetas brush pen</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>👜 Acessórios</h3>
+          <ul>
+            <li>Bolsas</li>
+            <li>Colares, Brincos e Pulseiras</li>
+            <li>Anéis</li>
+            <li>Presilhas e acessórios para cabelo</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>🎮 Itens Nerds</h3>
+          <span class="gift-note">(Para quem conhece um pouco dos meus gostos!)</span>
+          <ul>
+            <li>Colecionáveis e Funko Pop</li>
+            <li>Canecas temáticas</li>
+            <li>Livros de arte</li>
+            <li>Camisetas de séries, filmes ou jogos que eu gosto</li>
+            <li>Mouse pad, cadernos e outros itens temáticos</li>
+          </ul>
+        </div>
+
+        <div class="gift-category">
+          <h3>📚 Livros</h3>
+          <ul>
+            <li>Instinto Assassino</li>
+            <li>A Princesa e o Queijo Quente</li>
+            <li>Assassinato no Expresso do Oriente</li>
+            <li>Nadia Keane</li>
+            <li>O Legado de Hawthorne / A Herança</li>
+          </ul>
+        </div>
+
+        <p class="footer-msg">✨ Qualquer presente escolhido com carinho será muito especial para mim! 💖</p>
+      </div>
+    </details>
+
+  </div>
 </div>
 
-<script>
-  // Carrega a API do YouTube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '0',
-      width: '0',
-      videoId: 'WxnpecKm4tA',
-      playerVars: {
-        'autoplay': 1,
-        'loop': 1,
-        'playlist': 'WxnpecKm4tA'
-      },
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    // Tenta tocar. Se o navegador bloquear, espera um clique
-    event.target.playVideo();
-    
-    // Fallback: se o autoplay for bloqueado pelo navegador, toca no primeiro clique do usuário
-    document.body.addEventListener('click', function() {
-        if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-            player.playVideo();
-        }
-    }, { once: true });
-  }
-</script>
-  
 </body>
 </html>
